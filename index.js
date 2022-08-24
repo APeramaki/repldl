@@ -31,15 +31,15 @@ const collectMessages = () => {
             // Last Sunday at 8:23 PM
             const timeCol = el.querySelector('span[aria-colindex="3"]')
 
-            const reaction = el.querySelector('span[aria-colindex="4"]').firstChild()
+            const reaction = el.querySelector('span[aria-colindex="4"]')
             const message = {
                 // sender: el.querySelector('[aria-colindex="1"]').hasAttribute('data-author') ? el.querySelector('[aria-colindex="1"]').getAttribute('data-author') : '',
 
                 sender: senderCol ? senderCol.innerText : '',
                 message: msgCol ? msgCol.innerText : '',
                 time: timeCol ? timeCol.innerText : '',
-                reaction: reaction.children.length == 1 ? 
-                    reaction.firstChild().firstChild().innerText :
+                reaction: reaction.children && reaction.firstChild().children.length == 1 ? 
+                    reaction.firstChild().firstChild().firstChild().innerText :
                     ''
             }
 
